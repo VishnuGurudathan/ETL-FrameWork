@@ -1,7 +1,7 @@
 /**
  * EtlHandlerImpl.java
  */
-package com.exp.piot.handler.impl;
+package com.etl.handler.impl;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,28 +11,27 @@ import java.util.Timer;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import com.exp.piot.handler.BaseHandler;
-import com.exp.piot.scheduler.EtlScheduler;
-import com.exp.piot.utils.ProjectConstants;
-import com.exp.piot.utils.PropertiesHelper;
-import com.exp.piot.utils.ServiceSettings;
+import com.etl.handler.BaseHandler;
+import com.etl.scheduler.EtlScheduler;
+import com.etl.utils.ProjectConstants;
+import com.etl.utils.PropertiesHelper;
+import com.etl.utils.ServiceSettings;
 
 /**
  *
- * ETL-piot-csv : com.exp.piot
+ * etl-framework : com.etl
  *
  * @author vishnu.g
  *
- * 12-Dec-2017
+ *         22-Feb-2018
  */
-public class EtlHandlerImpl implements BaseHandler{
-
+public class EtlHandlerImpl implements BaseHandler {
 
 	private static final Logger logger = Logger.getLogger(EtlHandlerImpl.class);
 	private Timer timer;
 	private static final long INITIAL_DELAY = 600;
 	private EtlScheduler scheduler;
-	
+
 	public void start() 
 	{
 		configLogger();
@@ -46,7 +45,7 @@ public class EtlHandlerImpl implements BaseHandler{
 		timer = new Timer();
 		timer.schedule(scheduler, INITIAL_DELAY, scheduleInterval);
 	}
-	
+
 	/**
 	 * Enable logging configuration.
 	 */
@@ -59,31 +58,34 @@ public class EtlHandlerImpl implements BaseHandler{
 			logProp.load(ClassLoader.getSystemResourceAsStream(LOG_FILE));
 			PropertyConfigurator.configure(logProp);
 			logger.info("Configuring logger");
-		} catch (Exception exc) 
+		} 
+		catch (Exception exc) 
 		{
 			System.out.println("Logger not configured (or log4j properties file is missing), " + exc.getMessage());
 		}
 	}
 
-	public void stop() 
-	{
+	public void stop() {
 		logger.warn("Shutting down application");
 	}
 
-	private static long getScheduledInterval()
+	private static long getScheduledInterval() 
 	{
 		PropertiesHelper propertiesHelper = null;
-		try {
+		try 
+		{
 			propertiesHelper = new PropertiesHelper(ProjectConstants.APPLICATION_PROPERTY);
-		} catch (FileNotFoundException e) {
-			logger.error(e.getLocalizedMessage());
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
+		} 
+		catch (FileNotFoundException exc) 
+		{
+			logger.error(exc.getMessage());
+		} 
+		catch (IOException ioe) 
+		{
+			logger.error(ioe.getMessage());
 		}
 
 		return ServiceSettings.getInstance().getScheduledInterval(propertiesHelper);
 	}
-	
+
 }

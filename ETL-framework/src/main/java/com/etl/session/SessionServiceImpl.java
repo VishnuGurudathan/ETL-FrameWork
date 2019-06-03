@@ -1,30 +1,26 @@
 /**
  * PhSessionService.java
  */
-package com.exp.piot.session;
-
-import com.exp.piot.processor.DataValueProcessor;
+package com.etl.session;
 
 /**
  *
- * ETL-ph-csv : com.exp.piot.session
+ * ETL-ph-csv : com.etl.session
  *
  * @author vishnu.g
  *
- * 02-Jan-2018
+ *         02-Jan-2018
  */
 public class SessionServiceImpl implements SessionService {
 	
-	private DataValueProcessor processr;
+	
 	
 	@Override
 	public void execute() {
 	
 		try{
 		
-			processr.downloadFile();
-			
-			processr.processFile();
+			// TODO : Call methods from ETLJobLauncher implementation
 			
 		} catch (Exception exc) {
 			exc.printStackTrace();

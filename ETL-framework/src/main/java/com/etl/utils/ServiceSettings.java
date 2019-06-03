@@ -1,13 +1,13 @@
 /**
  * ServiceSettings.java
  */
-package com.exp.piot.utils;
+package com.etl.utils;
 
 import org.apache.log4j.Logger;
 
 /**
  *
- * ETL-piot-csv : com.exp.piot.utils
+ * etl-framework : com.etl.utils
  *
  * @author vishnu.g
  *

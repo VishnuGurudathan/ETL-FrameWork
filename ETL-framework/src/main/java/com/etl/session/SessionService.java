@@ -1,15 +1,15 @@
 /**
  * SessionService.java
  */
-package com.exp.piot.session;
+package com.etl.session;
 
 /**
  *
- * ETL-ph-csv : com.exp.piot.session
+ * ETL-ph-csv : com.etl.session
  *
  * @author vishnu.g
  *
- * 02-Jan-2018
+ *         02-Jan-2018
  */
 public interface SessionService {
 

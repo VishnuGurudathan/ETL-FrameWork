@@ -1,7 +1,7 @@
 /**
  * PropertyHelper.java
  */
-package com.exp.piot.utils;
+package com.etl.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +11,7 @@ import java.util.Properties;
 
 /**
  *
- * ETL-piot-csv : com.exp.piot.utils
+ * etl-framework : com.etl.utils
  *
  * @author vishnu.g
  *
